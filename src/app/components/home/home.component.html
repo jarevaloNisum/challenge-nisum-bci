@@ -1,0 +1,28 @@
+<div class="row home h-100">
+  <div class="col-sm-6 homeImg"></div>
+  <div class="col-sm-6 homeContent">
+    <h1>Bienvenido(a) al challenge</h1>
+    <h2>Nisum - BCI</h2>
+    <h5>
+      Desarrollado por: Juan Pablo Arévalo<br />Senior Front End Developer
+    </h5>
+    <div class="buttonRow">
+      <button
+        mat-raised-button
+        class="btn-prim"
+        color="primary"
+        (click)="goToURL('register/123')"
+      >
+        Ingresar con token 123
+      </button>
+      <button
+        mat-stroked-button
+        class="btn-sec"
+        color="primary"
+        (click)="goToURL('register/321')"
+      >
+        Ingresar con token 321
+      </button>
+    </div>
+  </div>
+</div>

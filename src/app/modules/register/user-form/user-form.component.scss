@@ -1,0 +1,128 @@
+.userForm {
+  text-align: center;
+  background-color: #ede7f6;
+  color: #595959;
+  h2,
+  h5,
+  h4 {
+    color: #c36188;
+  }
+  .registerDiv {
+    margin-bottom: auto;
+    margin-top: auto;
+    overflow-y: scroll;
+    background-color: #ede7f6;
+    scroll-behavior: smooth;
+
+    .personasACargo {
+      border: 1px solid #c4487a;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      padding: 15px 5% 20px 5%;
+      line-height: 1.5;
+      text-align: left;
+      h5 {
+        margin-top: 15px;
+        margin-bottom: 10px;
+      }
+      h6 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    }
+    .registerForm {
+      display: flex;
+      flex-direction: column;
+      padding: 35px 7%;
+      .personInCharge {
+        text-align: left;
+        margin-left: 0;
+        margin-right: 0;
+        border: 1px solid #c4487a;
+
+        padding: 35px 5% 20px 5%;
+        .formPersonInCharge {
+          margin-right: 0px;
+          margin-left: 0px;
+        }
+      }
+      .buttonRow {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+      }
+      mat-form-field {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      mat-form-field,
+      mat-label,
+      input {
+        color: #c4487a;
+      }
+      input::after {
+        border: 1px solid #c4487a;
+      }
+
+      button {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 1em;
+        padding: 23px 25px;
+      }
+      .btn-prim {
+        background-color: #c4487a;
+      }
+      .btn-prim:disabled {
+        background-color: #eea6c3;
+        color: white;
+      }
+      .btn-sec {
+        border: 1px solid #c4487a;
+        background-color: transparent;
+        color: #c4487a;
+        box-shadow: none;
+      }
+    }
+  }
+  .formImg {
+    background-image: url("../../../../assets/img/home2.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  }
+  .formImg2 {
+    display: none;
+  }
+}
+.return {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+  width: 30px;
+  cursor: pointer;
+  color: #c4487a;
+}
+@media only screen and (max-width: 767px) {
+  .formImg {
+    display: none;
+  }
+  .formImg2 {
+    display: block !important;
+    min-height: 300px;
+    background-image: url("../../../../assets/img/home2-sm.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  }
+  .return {
+    top: 340px;
+  }
+}

@@ -1,0 +1,162 @@
+<app-loader></app-loader>
+<div class="return">
+  <mat-icon (click)="goHome()" matSuffix>arrow_back</mat-icon>
+</div>
+<div class="userForm h-100">
+  <div class="row h-100">
+    <div class="col-md-6 formImg2"></div>
+    <div class="col-md-6 registerDiv">
+      <form
+        class="registerForm"
+        [formGroup]="registerForm"
+        (ngSubmit)="register(registerForm)"
+      >
+        <h2>Agregar usuario</h2>
+        <br />
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" placeholder="Nombre" />
+          <mat-icon matSuffix>account_box</mat-icon>
+          <mat-error *ngIf="checkValid(registerForm, 'nombre')"
+            >Nombre inválido</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Apellido</mat-label>
+          <input matInput formControlName="apellido" placeholder="Apellido" />
+          <mat-icon matSuffix>face</mat-icon>
+          <mat-error *ngIf="checkValid(registerForm, 'apellido')"
+            >Apellido inválido</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Edad</mat-label>
+          <input matInput readonly formControlName="edad" placeholder="Edad" />
+          <mat-icon matSuffix>cake</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Pais</mat-label>
+          <mat-select
+            formControlName="pais"
+            (selectionChange)="setCities(this.registerForm.get('pais')?.value)"
+          >
+            <mat-option
+              *ngFor="let country of countries$ | async"
+              [value]="country.country"
+              >{{ country.country }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Ciudad</mat-label>
+          <mat-select formControlName="ciudad">
+            <mat-option *ngFor="let city of cities$ | async" [value]="city">{{
+              city
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="addingPerson" class="personInCharge row">
+          <form
+            class="row formPersonInCharge"
+            [formGroup]="peopleInChargeForm"
+            (ngSubmit)="addPerson(peopleInChargeForm)"
+          >
+            <h4>Agregar persona a cargo<br /><br /></h4>
+            <mat-form-field class="form-field" appearance="outline">
+              <mat-label>Nombre completo</mat-label>
+              <input
+                matInput
+                formControlName="nombreCompleto"
+                placeholder="Nombre completo"
+              />
+              <mat-icon matSuffix>account_box</mat-icon>
+              <mat-error
+                *ngIf="checkValid(peopleInChargeForm, 'nombreCompleto')"
+                >Nombre completo inválido</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field class="form-field" appearance="outline">
+              <mat-label>Parentesco</mat-label>
+              <input
+                matInput
+                formControlName="parentesco"
+                placeholder="Parentesco"
+              />
+              <mat-icon matSuffix>line_style</mat-icon>
+              <mat-error *ngIf="checkValid(peopleInChargeForm, 'parentesco')"
+                >Parentesco inválido</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field class="form-field" appearance="outline">
+              <mat-label>Edad</mat-label>
+              <input
+                matInput
+                readonly
+                formControlName="edad"
+                placeholder="Edad"
+              />
+              <mat-icon matSuffix>cake</mat-icon>
+            </mat-form-field>
+
+            <div class="buttonRow">
+              <button
+                class="btn-sec"
+                mat-raised-button
+                (click)="addingPerson = false"
+                color="primary"
+              >
+                Cancelar
+              </button>
+              <button
+                class="btn-prim"
+                mat-raised-button
+                type="submit"
+                color="primary"
+              >
+                Agregar</button
+              ><br />
+            </div>
+          </form>
+        </div>
+        <div
+          class="personasACargo"
+          *ngIf="this.usuario.personaACargo.length > 0"
+        >
+          <h5>Personas a cargo</h5>
+          <h6
+            *ngFor="
+              let personaACargo of this.usuario.personaACargo;
+              let i = index
+            "
+          >
+            {{ i + 1 }}: {{ personaACargo.nombreCompleto }} -
+            {{ personaACargo.edad }} años - {{ personaACargo.parentesco }}
+          </h6>
+        </div>
+        <button
+          class="btn-sec"
+          mat-raised-button
+          *ngIf="!addingPerson"
+          (click)="addingPerson = true"
+          color="primary"
+        >
+          Agregar persona a cargo
+        </button>
+        <button
+          class="btn-prim"
+          mat-raised-button
+          type="submit"
+          [disabled]="
+            !registerForm.valid ||
+            this.registerForm.get('pais')?.value == '' ||
+            this.registerForm.get('ciudad')?.value == ''
+          "
+          color="primary"
+        >
+          Enviar
+        </button>
+      </form>
+    </div>
+    <div class="col-md-6 formImg"></div>
+  </div>
+</div>

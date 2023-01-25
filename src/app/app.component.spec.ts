@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'challenge-nisum-bci'`, () => {
+  it(`should have as title 'coding-challenge-bci'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('challenge-nisum-bci');
+    expect(app.title).toEqual('coding-challenge-bci');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('challenge-nisum-bci app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('coding-challenge-bci app is running!');
   });
 });
